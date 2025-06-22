@@ -1,6 +1,6 @@
 ### 👋 Hey there!
 
-Welcome to my LeetCode journey — I'm **Ebaad Awan**!
+Welcome to my LeetCode journey!
 
 In this repository, I’m working through the **LeetCode 75** problem sets, solving **one problem a day** 🧠💻. My goal is to stay consistent, improve my coding skills, and grow as a developer 🚀.
 
