@@ -1,0 +1,20 @@
+🧠 Thought Process
+
+The goal of this problem is to merge two strings by alternating characters, starting with the first character of word1.
+
+To do this, I used two pointers — i for word1 and j for word2 — and a StringBuilder to efficiently build the final merged string.
+
+I handled three scenarios based on the lengths of the input strings:
+
+1. Equal lengths:
+A single while loop runs as long as both pointers are within bounds. In each iteration, I append one character from word1 and then one from word2, moving both pointers forward.
+
+2. word1 is shorter:
+The first while loop alternates characters from both strings until word1 ends.
+A second while loop then appends the remaining characters from word2.
+
+3. word2 is shorter:
+Similar logic applies here. The first loop alternates characters until word2 ends.
+Then another loop appends the leftover characters from word1.
+
+At first, I overcomplicated the approach, but once I broke it down into these simple steps using separate while loops, it became a clean and easy-to-understand solution.
