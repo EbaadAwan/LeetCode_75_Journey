@@ -1,0 +1,14 @@
+🧠 Thought Process
+
+To solve this problem, I first needed to find out the current maximum number of candies any child had. 
+I wrote a helper function max() that loops through the candies array to determine the highest value. 
+This gave me a baseline to compare each child's potential candy count against.
+
+Next, I looped through each element in the candies array and checked if the current child's candy count, after receiving extraCandies, would be greater than or equal to the maximum value I had found earlier. 
+If it was, I added true to the result list, indicating this child could have the greatest number of candies. Otherwise, I added false.
+
+I stored these boolean results in an ArrayList<Boolean> and returned it.
+
+The solution was clean and ran efficiently in 1 ms, which is great. 
+One possible improvement would be using an enhanced for-loop in the max() method to improve readability.
+Other than that, the code is well-structured and easy to understand.
