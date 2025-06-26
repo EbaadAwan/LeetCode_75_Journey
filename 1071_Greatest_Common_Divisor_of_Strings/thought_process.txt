@@ -1,0 +1,33 @@
+🧠 Thought Process
+
+To solve this problem, I needed to find the greatest common "divisor" string that can be used to construct both input strings `str1` and `str2` through repeated concatenation. 
+In other words, I had to identify the largest possible string that could be multiplied (i.e., repeated) some number of times to recreate both `str1` and `str2`.
+
+My first step was to observe a key mathematical property: if both strings can be constructed by repeating the same substring, then the length of that substring must divide evenly into the lengths of both strings. 
+This led me to calculate the greatest common divisor (GCD) of the lengths of `str1` and `str2` using the Euclidean Algorithm. 
+That value would represent the maximum length for any potential common divisor string.
+
+Once I had the GCD of the lengths, I approached the problem using a hands-on method. 
+I used a loop to shrink `str2` from the end one character at a time, treating each shortened version as a candidate substring. 
+For each candidate, I tried to build `str1` by repeatedly appending that candidate until the lengths matched. 
+If the result matched `str1`, I did the same for the original value of `str2` to ensure that both strings could be built from this substring.
+
+If both checks passed, I returned the substring as the answer. 
+If not, I kept shrinking `str2` and trying again until there were no more characters left to test.
+
+This method worked and passed all the test cases, but it was not very efficient. 
+My solution ran in 13 milliseconds, which was slower compared to optimized solutions. 
+However, I was happy that I was able to think through the logic and arrive at a working solution on my own, even if it wasn’t the cleanest.
+
+After completing the problem and reviewing other approaches, I realized that the code could have been simplified significantly. 
+A cleaner and faster way is to first check if `str1 + str2` equals `str2 + str1`. 
+If this condition is not met, it means no common base string can form both inputs. 
+If the condition is true, then the greatest common divisor of the lengths of the two strings gives the correct length for the answer. 
+In that case, the result would simply be `str1.substring(0, gcd)`.
+
+This alternate method avoids the repeated string building and shrinking, and results in a much more efficient solution. 
+Looking back, I would improve my code by incorporating this logic to make it cleaner and more performant.
+
+Overall, solving this problem helped me understand how mathematical concepts like GCD can be applied to string patterns, and it gave me practice in both string manipulation and optimization.
+
+
