@@ -1,0 +1,27 @@
+🧠 Thought Process
+
+This problem was harder for me than it looked. 
+I spent a long time trying to come up with a solution because I was overthinking it. 
+I thought the answer would be more complicated than it actually was. 
+Normally, I check the discussion section during solving a problem to see how others think about the problem, but this time I peeked at the editorial — not the solution itself — just to get an idea of how to think about the problem. 
+That helped a lot and gave me the push I needed.
+
+The main idea is to find spots in the flowerbed where I can plant a flower without putting it next to another one. 
+The trick is to look for three empty spots in a row (0 0 0) and plant a flower in the middle one.
+
+I started by checking small cases first:
+    If the flowerbed has only one spot and it's empty, I can plant one flower.
+    If it has two spots, I check if both are empty and then plant one flower.
+
+Then I checked the start of the array. 
+If the first two spots are empty, I planted a flower there. 
+For the middle part of the array, I used a loop starting from index 2 to check for three empty spots in a row. 
+If I found them, I planted a flower and skipped the next spot to avoid planting next to it.
+At the end, I also checked if the last two spots were empty and planted a flower there if possible.
+
+After counting how many flowers I planted, I compared that to the number of flowers needed (n). 
+If I planted enough, I returned true, otherwise false.
+
+My solution ended up running in 1 ms, which was nice to see. 
+Even though I struggled at first and was stuck overthinking, I’m glad I didn’t copy any full answers and figured it out myself using just the editorial’s idea. 
+This problem taught me to slow down, think about simple cases, and not ignore edge cases.
