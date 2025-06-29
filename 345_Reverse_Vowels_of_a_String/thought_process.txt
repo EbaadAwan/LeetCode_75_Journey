@@ -1,0 +1,27 @@
+🧠 Thought Process
+
+For this problem, I was asked to reverse only the vowels in a given string while keeping the positions of the non-vowel characters unchanged. 
+The problem itself was straightforward and I approached it in a way that made logical sense to me without overcomplicating the implementation.
+
+I started by identifying the set of characters considered vowels (a, e, i, o, u in both lowercase and uppercase). 
+I used an ArrayList<Character> called v to collect all the vowels from the input string during the first traversal.
+
+Then, I performed a second pass through the original string using a StringBuilder to construct the final result. 
+Each time I encountered a vowel in the original string, I replaced it with the last vowel stored in my list (i.e., reversing the order). 
+Non-vowel characters were added to the result as-is.
+
+Breakdown of Logic:
+    First pass: Store all vowels in the order they appear in a list.
+    Second pass: Reconstruct the string. If the character is a vowel, replace it with the last vowel from the list (v.remove(j)), effectively reversing their order.
+
+This method was simple and intuitive. It helped me clearly separate the extraction and reinsertion of vowels.
+
+
+After solving the problem, I looked at other people's solutions and realized that my code could have been optimized further. 
+For instance:
+    Instead of using an ArrayList and .remove() (which takes O(n) time per removal from the end), I could have used a two-pointer approach, swapping vowels in-place with a character array, which would have improved runtime and space efficiency.
+    I also could have used a HashSet for the vowel lookup instead of String.indexOf() for better lookup performance.
+
+Still, I am satisfied with how I approached the problem, especially since the logic was clear and the implementation correct. 
+It ran in 7 ms, which is acceptable, though not the most optimized.
+
