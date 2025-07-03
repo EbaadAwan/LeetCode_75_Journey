@@ -1,0 +1,28 @@
+🧠 Thought Process
+
+ This problem was one of the easiest in my LeetCode 75 journey. 
+ The task was to reverse the order of words in a sentence and remove any extra spaces. 
+ I found this problem very straightforward and solved it quickly. 
+ It was actually the shortest time I’ve taken to complete a problem so far in this challenge. 
+ I'm using a new learning method where I ask AI to remind me about certain rules and functions in Java. 
+ This method has really helped me remember how different data types and functions work while I solve problems.
+
+ To solve the problem, I first removed any extra spaces at the start and end of the string using '.trim()'. 
+ Then I used '.split("\\s+")' to break the sentence into individual words. 
+ The regular expression '\\s+' makes sure that any amount of spaces (even tabs or new lines) are treated as one space. 
+ This gave me a clean array of words without empty elements.
+
+ After that, I used a two-pointer method to reverse the array. 
+ I set one pointer at the start and one at the end, then swapped the words while moving both pointers toward the center. 
+ This is a simple and efficient way to reverse things in place.
+
+ Once the words were reversed, I used 'String.join(" ", words)' to put them back together into one sentence, with just one space between each word. 
+ This made the result clean and ready to return.
+
+ The code ran in 7 milliseconds, which is a good runtime. 
+ I’m happy with the result because it’s clean, easy to understand, and handles edge cases like multiple spaces between words.
+
+ Overall, I’m proud of this solution. 
+ I didn’t have to look at the full solution or discussion section. 
+ I only used AI to refresh my memory on how certain Java functions work, and I think this learning method is working well for me. 
+ There's always room to make things better, like trying to use less memory or not using an array, but for now, I’m happy I solved it on my own and understood everything I wrote.
