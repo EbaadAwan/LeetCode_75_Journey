@@ -1,0 +1,22 @@
+🧠 Thought Process
+
+This problem took me a while to figure out, and I’ll admit — I struggled at the start. 
+My goal was to solve it in O(n) time, but my first solution ended up being O(n²). 
+In that solution, I looped through each index and, for every element, I removed it by setting it to 1, then multiplied the entire array to get the product. 
+I would restore the number after, but because I was doing a full loop inside another loop, the time complexity became too slow.
+
+After thinking hard about how to improve it, I decided to use AI for some feedback and suggestions, but I made it clear that I didn’t want the answer spoiled.
+
+This is when I was introduced to the idea of prefix and suffix products — something I hadn’t learned in class. 
+At first, I was confused. I didn’t really understand how precomputing values could help, but once I saw a visual breakdown of what a prefix and suffix product is, things started to click. 
+The idea of using two passes (one from the left and one from the right) made sense, but I still found it hard to implement.
+
+So yes, I kind of cheated myself a little — I asked AI to help me build the loops without spoiling the full solution, but the pseudocode gave it away. 
+Still, I’m not afraid to admit that. I genuinely learned something new and now have a solid understanding of prefix and suffix products.
+
+Looking back, I realized I was overthinking the problem. 
+I was so focused on doing everything in one go that I didn’t pause to break the problem into visual steps. 
+In the future, I want to try drawing out examples or visualizing the problem on paper before writing code. 
+I think it’ll help me more than I expected.
+
+In the end, my solution passed with a runtime of 1 ms, and even though I had help, I know I learned something valuable — both about programming and how I learn best.
