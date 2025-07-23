@@ -1,0 +1,37 @@
+🧠 Thought Process
+
+The problem asked whether a given array contains an increasing subsequence of three numbers — not necessarily next to each other, but in order such that nums[i] < nums[j] < nums[k] with i < j < k.
+
+At first, I misunderstood the problem by thinking the sequence needed to be contiguous. 
+My initial approach failed because I tried to find a "run" of increasing numbers rather than looking for values that could be spread out but still in the correct order.
+
+After stepping back and asking for guidance, I got a really helpful breakdown — not a solution, but a way to think about it.
+    Sorting the array wouldn’t work, because we’d lose the original indices, and the problem specifically cares about their relative positions.
+    The real trick was realizing I didn’t need to track every possible triplet — just the smallest two numbers so far (first and second) and check if a number comes along that is greater than both.
+    Once that happens, we can immediately return true.
+
+This algorithm made me realize that the best way to solve the problem is to greedily track values during a single pass through the array. 
+This approach gave me an efficient O(n) time solution with O(1) space.
+
+My Solution (Runtime: 3 ms):
+    I used two variables first and second to hold candidates for the first and second elements in the potential triplet. 
+    As I looped through the array:
+        I kept updating first if I saw a new low.
+        I updated second if I found a number between first and what second was before.
+        As soon as I found a number greater than both first and second, I knew a triplet existed and returned true.
+
+
+I really wanted to solve this on my own, but sometimes a little guidance goes a long way. 
+Instead of asking for the full answer, I used AI as a thinking partner. The AI helped me:
+    Understand what the question was really asking.
+        Catch flaws in my initial logic (e.g., sorting doesn't preserve index order).
+        Encourage me to think in terms of "state tracking" instead of brute-force.
+        Guide me toward an efficient way of solving the problem with minimal hints.
+
+It didn’t give me the code — it gave me the right mental framework, and I did the rest.
+
+Even though it took longer than expected, I’m proud I stayed committed to learning instead of rushing. 
+This problem strengthened my ability to:
+    Think beyond surface-level patterns (like contiguous sequences).
+    Use greedy algorithms in a smart way.
+    Trust the process, even if I need help along the way.
