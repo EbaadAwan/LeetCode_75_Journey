@@ -1,0 +1,28 @@
+🧠 Thought Process
+
+This was the last problem in the Array/String section of LeetCode 75, and honestly, it gave me a hard time. 
+The problem is rated medium, but like many people in the discussions mentioned, the wording is confusing at first. 
+I struggled to fully understand what it wanted me to do. 
+The task was to compress a char[] array in place and return the new length, but the description made it sound like we start with a string. 
+I was unsure if I could use a dynamic array like an ArrayList or if I had to manually compress the given array. 
+Eventually, I learned that the whole point of this problem is to do everything in place without using extra space, which made the approach a bit more challenging.
+
+Another thing that confused me was whether I actually needed to change the array or just count the compressed length and return it. 
+Since arrays in Java don’t change size, I didn’t know how to handle it at first. 
+Later, I understood that we only overwrite the existing array and use a separate pointer (write) to build the compressed result while scanning the array with another pointer (read). 
+This two-pointer idea took me a while to grasp. 
+I kept overthinking how both pointers should move, especially when characters repeated more than once, and I wasn’t sure whether a for loop or a while loop was better. 
+In the end, the while loop made more sense because it gave more control over how I skipped repeated characters.
+
+I have to admit that I relied on AI more than I wanted to. 
+My goal was to solve this problem mostly on my own, only using AI for hints, but I ended up asking for a lot of help. 
+AI helped me understand the confusing wording of the problem, visualize how the two pointers should work, and even fix syntax errors in my code. 
+While I did write the final solution myself, I don’t feel like I solved this one independently. 
+It showed me that I still need to improve my problem-solving skills and try harder to think through problems without depending on AI too much.
+At the same time, I see that coding with AI is becoming normal, so my goal is to find a balance—using AI as a helper, not a crutch.
+
+In the end, I got a working solution with a runtime of 1 ms. 
+My approach uses a read pointer to scan each group of repeating characters, a write pointer to overwrite the array in place, and a small loop to write the count digits when a character repeats more than once. 
+This problem was tricky but it helped me practice in-place array modifications and two-pointer techniques. 
+The key takeaway for me is that I need more practice solving problems on my own and not relying too heavily on AI, but I’m happy that I learned a lot from this challenge.
+
