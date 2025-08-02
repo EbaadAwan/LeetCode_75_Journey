@@ -1,0 +1,21 @@
+🧠 Thought Process
+
+For this problem, my goal was to rearrange the array so that all zeroes are moved to the end while maintaining the relative order of the non-zero elements. 
+I wanted to do this in-place with minimal operations.
+
+Unlike my previous problem, where I relied too much on AI for help, I made it a priority this time to solve it on my own. 
+The experience from the last question helped me shift my mindset—I realized that while AI can be a powerful tool for learning, I need to rely on my own problem-solving skills first.
+
+I started by analyzing the problem requirements and thinking of a two-pointer approach. 
+The main challenge was making sure the algorithm didn’t unnecessarily swap zeros with themselves and didn’t break the order of non-zero elements. 
+At first, I made mistakes with my pointer movement and swapping logic, but instead of turning to AI, I used Python Tutor to visualize the execution of my code. 
+This helped me debug my logic and understand where my mistakes were happening.
+
+Eventually, I implemented a solution that counts the total number of zeros first. 
+If there are no zeros, the function returns immediately to save time. 
+Otherwise, I used two pointers (i and j) to iterate over the array, skipping zeros and swapping non-zero values toward the front. 
+This ensured that all non-zero elements were shifted forward while zeros naturally moved to the end.
+
+The final solution had a runtime of 2 ms, which I’m very happy with. 
+Overall, I’m glad that I completed this problem independently, as it built my confidence. 
+While my previous experience with AI did help shape my approach, this time I solved it fully on my own, showing me that AI is a great tool for learning but doesn’t replace my own reasoning.
