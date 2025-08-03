@@ -1,0 +1,21 @@
+🧠 Thought Process
+
+For this problem, my goal was to determine whether string s is a subsequence of string t. 
+I approached the problem using a two-pointer technique, which allowed me to iterate through both strings efficiently in one pass.
+
+I started by converting both strings s and t into character arrays (sArray and tArray). 
+Looking back, this step wasn’t necessary because I could have directly accessed the characters using charAt(). 
+This didn’t affect the runtime but did use extra space, which I’ll avoid in future solutions.
+
+I used two pointers:
+    i to track the current character in s
+    j to track the current character in t
+
+The logic was straightforward:
+    While both pointers are within their string lengths:
+        If the characters at both pointers match, I moved both i and j forward because it meant I found the next character of s in t.
+        If they didn’t match, I only moved j forward to continue searching in t.
+    If I managed to move through all characters of s (i == sArray.length), it meant s is a subsequence of t, so I returned true; otherwise, I returned false.
+
+This approach worked efficiently, running in O(n) time with a 0 ms runtime, making it the fastest problem I’ve solved so far in the LeetCode 75 set. 
+Overall, the solution was clean and simple, but I learned that unnecessary steps (like converting to char arrays) should be avoided in future problems to save space.
