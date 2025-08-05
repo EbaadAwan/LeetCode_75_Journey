@@ -1,0 +1,29 @@
+🧠 Thought Process
+
+For this problem, my goal was to find two vertical lines that, together with the x-axis, form a container holding the maximum amount of water. 
+At first, the problem seemed challenging because a brute force approach would require checking all possible pairs of lines, which would be too slow for large inputs. 
+Instead, I aimed for a more optimal approach.
+
+I decided to use the two-pointer technique, starting one pointer at the beginning of the array (i = 0) and the other at the end (j = height.length - 1). 
+This approach makes sense because the widest container is between the two ends, and the only way to potentially find a larger area is to move the pointer pointing to the shorter line inward. 
+This is because the container’s area depends on the shorter of the two heights—moving the taller line won’t help increase the area, but moving the shorter one might lead to a taller boundary and a larger area.
+
+Here’s the step-by-step thought process of my code:
+    Initialize variables:
+        maxArea to track the largest area found so far.
+        Two pointers i and j at opposite ends of the array.
+    Iterate while i < j:
+        Calculate the width (length = j - i).
+        Find the limiting height (h = Math.min(height[i], height[j])).
+        Compute the area (area = length * h) and update maxArea if this area is larger.
+    Move the pointer:
+    If the left line (height[i]) is shorter, move i forward.
+    Otherwise, move j backward.
+    This is the key optimization that avoids unnecessary comparisons and ensures an O(n) time complexity solution.
+
+By following this logic, my solution efficiently checked all meaningful possibilities for the container boundaries without brute force. 
+My runtime was 4ms, which is optimal for this problem.
+
+While solving this, I made use of LeetCode’s hints and read through the discussions to understand the reasoning behind the two-pointer approach better. 
+The hints helped me realize that starting from both ends and narrowing down is the most efficient strategy. 
+Reading others' explanations clarified why moving the shorter pointer is the correct choice, which made my understanding of the problem much stronger.
