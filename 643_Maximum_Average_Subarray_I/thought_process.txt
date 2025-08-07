@@ -1,0 +1,22 @@
+🧠 Thought Process
+
+When I began solving this problem, my initial approach focused on computing the average of every possible subarray of length k. 
+To do this, I used a while loop that moved a window of size k across the array, and for each position, I recalculated the entire sum of the subarray using a nested for loop. 
+Although this approach was logically correct and passed 124 out of 127 test cases, it failed due to a Time Limit Exceeded (TLE) error on large inputs. 
+The reason was that my solution had a time complexity of O(n × k), which became inefficient for arrays near the upper size limit.
+
+At this point, I turned to AI for constructive feedback—not to get the answer, but to better understand why my code was running slowly and what principles I could apply to improve it. 
+I received key guidance to think more carefully about how to reuse computations, particularly around the idea of a sliding window.
+
+From there, I re-evaluated my approach and realized I could avoid recalculating the entire sum each time by maintaining a running sum that adds the new number and removes the old one as the window slides. 
+This insight helped me bring down the time complexity to O(n).
+
+Additionally, I explored the LeetCode discussions for tips and validation of my thought process. 
+The community emphasized using a true sliding window pattern, which confirmed that I was on the right track with my optimized version.
+
+In my final solution:
+    I first computed the sum of the first k elements.
+    Then, I used a for loop to slide the window one element at a time, updating the sum in constant time by subtracting the element that left the window and adding the one that entered.
+    I continuously updated maxAverage with the highest average found.
+
+This version ran in 5 ms, a major improvement from the original version, both in performance and efficiency.
