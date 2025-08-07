@@ -1,0 +1,32 @@
+🧠 Thought Process
+
+When I first started this problem, my goal was to solve it using the two-pointer technique, since the question is part of the Two Pointers section of the LeetCode 75 set. 
+My initial thought was to use nested loops and set matched pairs to 0 to prevent reuse. 
+I knew that since nums[i] is guaranteed to be ≥ 1, using 0 as a marker would be safe.
+
+My first version used a brute-force approach (O(n²)) with two loops to find and count valid pairs that summed to k. 
+It worked on 44 out of 51 test cases but struggled with edge cases and timing out on larger inputs. 
+I cleaned up the loop logic and started computing the complement with subtraction, which got me to 45 out of 51 test cases passed.
+
+Despite wanting to stick with two pointers, I realized that without sorting the array, the classic two-pointer pattern wasn’t fitting this problem. 
+I debated sorting and using left/right pointers, but that would have introduced new complexity in avoiding reuse. 
+Eventually, I decided to try the HashMap method, which I had seen mentioned in the LeetCode discussions.
+
+At this point, I brought in AI to help me debug—not to give me the solution. 
+I had the core idea of using a HashMap to track frequencies, but I wasn’t sure how to avoid reusing numbers incorrectly. 
+AI helped me understand that I needed to handle the special case where a number is paired with itself (like 3 + 3 = 6). 
+I needed to make sure that there were at least two occurrences of a number before making such a pair.
+
+AI also pointed out a bug in my earlier logic, where I mistakenly updated frequencies using the wrong key (e.g., num - 1 instead of num). 
+With that correction and the self-pairing check in place, my final solution passed all 51 test cases.
+
+The final version uses a HashMap to count frequencies of each number. 
+Then, during the second pass, it checks if the complement (k - num) exists and both values have positive frequencies. 
+If so, it counts the pair and decrements both values from the map. 
+If the number is equal to its complement, it ensures there are at least two copies before counting it.
+
+Although I initially wanted to solve this using two pointers, the HashMap approach was more natural given the problem constraints. 
+I still feel like I arrived at the solution myself and used AI as a guide—not as a crutch. 
+This is how I want to use AI going forward: not to hand me answers, but to help me debug, think critically, and grow as a problem solver.
+
+While my solution wasn’t the most optimal (51 ms runtime), I’m happy with the outcome and the learning process that came with it.
