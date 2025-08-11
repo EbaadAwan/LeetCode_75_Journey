@@ -1,0 +1,22 @@
+🧠 Thought Process
+
+When I first tried solving the problem, I used two pointers to go through the string and check for vowels. 
+I would count vowels until the two pointers met, then reset the count to zero and start again for the next substring. 
+This worked fine for small inputs, but it was painfully slow for larger ones. 
+The problem was that I was re-counting the vowels for each new window instead of just updating the count as the window moved, which made my solution run in O(n·k) time and caused a Time Limit Exceeded error.
+
+After getting some feedback, I realized I needed to approach it differently. 
+Instead of constantly starting over, I should keep the window fixed at size k and only calculate the vowel count once for the very first window. 
+From there, each time I slid the window forward by one character, I would just check the character that came in and the one that went out, adjusting the count by one up or down as needed. 
+I also learned not to reset the count completely and to stop early if the maximum count ever reached k, since that would mean the window was full of vowels.
+One thing I noted from this process was that the pseudo code I got was a little too close to the actual answer. 
+I wanted to work it out fully myself, so in the future I’d prefer more general hints instead of something that almost hands me the solution.
+
+In the final version, I counted the vowels in the first k characters, stored that as both the current count and the maximum count, and then slid the window across the string. 
+For each new position, if the new character was a vowel, I increased the count; if the character leaving was a vowel, I decreased the count. 
+I updated the maximum count along the way and returned early if I ever reached k. 
+This way, each character was only processed twice—once when it entered the window and once when it left—making the time complexity O(n) and the space complexity O(1).
+
+Looking back, the change was simple but made all the difference. 
+The first version kept doing extra work, while the final version was clean, efficient, and fast, finishing with a runtime of 17 ms. 
+It also reminded me that in sliding window problems, the key is often to update values incrementally instead of recalculating everything from scratch.
