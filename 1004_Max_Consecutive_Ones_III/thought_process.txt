@@ -1,0 +1,25 @@
+🧠 Thought Process
+
+I started this problem thinking I just had to count how many 1s were in a row while allowing up to k zeros, but my first tries didn’t really work like a proper sliding window. 
+I kept resetting counters or letting loops run past the end of the array, which gave me wrong results. 
+For example, I had a condition that made the loop keep running even when the index was already past the array, just because the zero counter wasn’t equal to k. 
+That showed me my logic wasn’t matching the idea of keeping a window of numbers.
+
+Then I tried using two pointers, but I had other issues. 
+I was only updating the max length when the window broke the rule (too many zeros), so I missed good answers if the window never broke. 
+I was also measuring at the wrong time—before fixing the window—so I was recording lengths that weren’t really valid. 
+On top of that, sometimes I was checking the same index twice in one loop, which could skip numbers or go out of bounds. 
+These mistakes weren’t coding errors, they were flow errors, because I wasn’t following the true sliding-window process.
+
+What helped me was picturing the array as a window that slides to the right. 
+The rule is simple: if the window has k or fewer zeros, keep going; if it has more than k, move the left pointer until the window is valid again. 
+Once I stuck to that idea—grow the window step by step, and only shrink it when needed—the logic started to make sense.
+
+Using Python Tutor also helped a lot. 
+I asked AI for a main class so I could test my code, and the version I got back had a small edit that made more test cases pass. 
+That didn’t give me the full solution, but it pointed me toward what was wrong.
+ After that, I was able to figure out the rest on my own.
+
+In the end, my solution ran in 3 ms, which was faster than most submissions. 
+I learned that I need to measure only valid windows, process each step of the right pointer once, and let the left pointer fix things only when the rule is broken. 
+AI didn’t hand me the answer—it just gave me the tools and hints I needed to finally see the solution clearly.
