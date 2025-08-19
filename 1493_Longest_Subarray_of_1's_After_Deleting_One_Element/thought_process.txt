@@ -1,0 +1,30 @@
+🧠 Thought Process
+
+I started this problem by trying to count how many 1s I could see as I slid a window across the array. 
+I kept left, right, a count of 1s, a zeros counter, and a maxCount. 
+When I saw a 1, I bumped count; when I saw a 0, I bumped zeros. 
+If zeros stayed ≤ 1, I updated maxCount. If zeros went over 1, I moved left forward until there was at most one zero in the window again.
+
+That first version looked reasonable, but it had a quiet flaw: I treated the answer as “how many 1s are in the window” instead of “how long the whole window is (with at most one zero) minus one deletion.” 
+Because I only grew count on 1s and didn’t always shrink it when moving left, the number I compared to maxCount didn’t consistently represent the true window length. 
+The update logic also mixed two ideas: tracking a 1s streak and tracking a valid window that tolerates a single zero. 
+This mismatch is why the results didn’t line up with the problem’s requirement to delete exactly one element.
+
+While stepping through examples in Python Tutor, it became clearer that what I really needed was a consistent window size that includes both 1s and at most one 0, and then to account for the forced deletion at the end. 
+My early code sometimes updated maxCount using count (1s only) and sometimes using right - left (window size), which told me I was mixing metrics.
+
+After reading the discussions, I saw the hint that this problem mirrors LeetCode 1004 (“Max Consecutive Ones III”). 
+That clicked. In 1004, you allow up to k flips (here, k = 1) and track the longest window that contains at most that many zeros. 
+The missing piece for 1493 is that we must delete one element, so even if the window is valid, the final length has to be one less than the window size.
+
+So I took the working sliding-window template from my 1004 solution: expand right, increment a running count of elements in the window (not just 1s), increment zero when I see a 0, and while zero > 1, move left and decrease count appropriately, also reducing zero when I pass a 0. 
+Whenever the window is valid (zero <= 1), I update max using the full window length I’m tracking. 
+That gives me the best “at most one zero” window.
+
+The final step is simple but important: return max - 1. 
+That “-1” models the required deletion from the chosen window, whether the deleted element is a zero (which turns the window into pure 1s) or a one (in the edge case where the best window had no zeros at all). 
+With this, my code ran in 3 ms.
+
+Overall, I didn’t reinvent the wheel here. 
+I recognized the pattern from 1004 after reading the discussions, reused the same sliding-window logic that limits zeros to one, and then subtracted one at the end to respect the “delete one element” rule. 
+It wasn’t my most independent solve, but I still learned to spot when two problems share the same sliding-window backbone and how a small twist (the final “-1”) lines the solution up with the exact problem statement.
