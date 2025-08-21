@@ -1,0 +1,22 @@
+🧠 Thought Process
+
+I read the problem and recognized it as a prefix-sum question. 
+The biker starts at altitude 0, and each number in gain is how much the altitude changes between stops. 
+So the altitude after each step is just the running total (cumulative sum) of the gains, starting from zero. 
+The highest altitude is the maximum value that running total ever reaches, but if all gains keep the biker below zero, the answer should be 0 because the starting point (altitude 0) is still the highest.
+
+With that in mind, I went with a straightforward plan: build the running sums and then take the maximum. 
+I chose to do it in two passes while reusing the gain array to save extra space. 
+First, I set sum = gain[0] and walked through the array from index 1, each time adding the current value to sum and writing the running total back into gain[i]. 
+After that loop, gain[i] represents the altitude after the i-th segment. Next, I scanned the array again to find the largest value (initialized max to Integer.MIN_VALUE so any value would beat it). 
+Finally, I compared that maximum with 0. If the max was negative, I returned 0; otherwise I returned the max. This matched the problem’s “start at 0” rule and handled cases where every segment dropped below zero.
+
+A few notes on choices and edge cases:
+    The logic implicitly treats the starting altitude (0) by doing a final comparison with 0. That way, if all running sums are negative, 0 wins.
+    Constraints on LeetCode ensure gain isn’t empty, so starting from gain[0] works without extra checks. If it were empty in a different context, you’d just return 0.
+    Time complexity is O(n) and space is O(1) because I reused the input array for prefix sums.
+    The 0 ms runtime is great but also common on LeetCode due to how the Java judge batches runs—either way, it’s optimal for this problem.
+
+If I were to refine the style further, I could do it in a single pass without modifying the input: keep a runningSum that starts at 0, update it with each gain[i], and track a maxAltitude that starts at 0. 
+That version is equally O(n)/O(1) and makes the “start at 0” part even more explicit. 
+But the approach I took still clearly communicates the prefix-sum idea, is easy to read, and returns the correct result efficiently.
