@@ -1,0 +1,28 @@
+🧠 Thought Process
+
+I started the problem a bit unsure. 
+The idea of a “pivot index” didn’t click right away. 
+After reading the hints, the solution became clear: keep track of the sum on the left of each index and the sum on the right of each index, then find the first index where those two sums match.
+
+I followed the hints exactly. 
+First, I built a sumLeft array where sumLeft[i] is the total of everything before i. 
+I did this in one left-to-right pass while keeping a running total. 
+Then I built a sumRight array where sumRight[i] is the total of everything after i. 
+I did this in a right-to-left pass with another running total. 
+Finally, I looped once more and returned the first index where sumLeft[i] == sumRight[i]. If none matched, I returned -1.
+
+The code worked on the first try and ran in 1 ms. 
+Time complexity is O(n) because I only make a few passes over the array. 
+Space complexity is O(n) because I store two extra arrays. The approach is easy to understand and matches the hints perfectly.
+
+What I liked: the structure was clean and the logic was straightforward. 
+The separate passes made it simple to reason about left and right sums. 
+It was also easy to verify correctness—if the left-running sum and right-running sum are equal at some i, then i is the pivot.
+
+What I’d improve next time: I’d try to solve it without relying on hints first. 
+There’s also a small optimization: I could avoid the extra arrays by computing the total sum once, then walk from left to right, maintaining a leftSum and checking if leftSum == totalSum - leftSum - nums[i]. 
+That would keep O(n) time but reduce space to O(1). For this attempt, though, I chose clarity by following the hint-based algorithm.
+
+Overall, this was a quick and successful solve. 
+The hints helped me lock onto the right idea fast, and I’m happy I got it correct on the first try. 
+Going forward, I’ll try to think through the pattern myself before using hints, and only lean on them as a last resort.
