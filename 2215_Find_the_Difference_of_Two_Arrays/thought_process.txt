@@ -1,0 +1,17 @@
+🧠 Thought Process
+
+For this problem, I worked on 2215. Find the Difference of Two Arrays from the LeetCode 75 set. 
+It was labeled as an easy question, and I found it to be fairly straightforward. 
+I didn’t spend too much time on it, which shows that I understood the requirements pretty quickly.
+
+My approach was to use two hash maps to keep track of the unique elements from each array. 
+I chose HashMap over HashSet because I was storing the elements as keys and simply using the index as a value, but in reality, a set could have worked as well since I only cared about uniqueness. 
+Once I had the unique elements stored, I looped through each map and checked if the element existed in the other. 
+If not, I added it to the corresponding result list.
+
+The logic worked well because it was clean, direct, and avoided unnecessary checks. 
+After collecting the unique elements from both arrays, I stored them in a list of lists and returned the result. 
+My code ended up with a runtime of 9 ms, which was really good since it beat 97% of other submissions. 
+That result made me feel confident that my solution was not only correct but also efficient.
+
+Overall, this problem was a nice warm-up, and I’m glad I got to solve it quickly and efficiently.
