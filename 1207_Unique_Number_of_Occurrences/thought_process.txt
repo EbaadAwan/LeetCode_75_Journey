@@ -1,0 +1,23 @@
+🧠 Thought Process
+
+I started by focusing on the main idea: count how many times each number appears, then make sure those counts are all different. 
+Since I’m comfortable with hash maps, I used a HashMap<Integer, Integer> to store the frequency of each number. 
+My loop put each number in the map and bumped its count. I wrote it using putIfAbsent(..., 1) followed by another put(..., get(...) + 1). 
+That technically starts a new number at 2 instead of 1, but because every count is shifted by the same +1, the “are all counts unique?” check still works. 
+It’s extra work, though, and I noted that a cleaner way is put(key, getOrDefault(key, 0) + 1) so counts start at 1 as expected.
+
+After counting, I took the map’s values (the frequencies) and put them into an ArrayList, then sorted it. 
+To detect duplicates, I used Collections.frequency(values, i) inside a loop. 
+That’s correct but not the fastest, because frequency scans the list each time, turning the check into roughly O(n²). 
+My result still passed with a 5 ms runtime, but I know there’s room to make it faster.
+
+Looking back, two easy speed-ups stand out. 
+First, since I already sorted the list of counts, I could just compare neighbors once (if any adjacent pair is equal, return false). 
+That keeps it O(n log n) with no extra data structures. 
+Second, learning and using a HashSet<Integer> for the counts would be even cleaner: as I iterate through the frequencies, I try to add each one to a set; if add fails, it means a duplicate count, so return false. 
+That version is O(n) after the initial counting and doesn’t need sorting at all.
+
+Overall, I’m happy I translated the goal into a working solution quickly using tools I know (hash maps) and verified the uniqueness correctly. 
+I also spotted a small counting quirk (the +1 shift) that didn’t break correctness but is worth fixing for clarity. 
+Next time, I’ll either use the neighbor-check after sorting or switch to a HashSet to tighten the runtime. 
+The key lessons for me: keep counting code clean with getOrDefault, and use the right structure (HashSet) or a simple neighbor scan to detect duplicates efficiently.
