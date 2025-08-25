@@ -1,0 +1,33 @@
+🧠 Thought Process
+
+I started by making sure the two strings were even worth comparing. 
+If their lengths don’t match, there’s no way to transform one into the other, so I returned early in that case. 
+That simple check saved me time and let me focus on the real logic only when it mattered.
+
+Next, I counted how many times each character appears in both strings. 
+I used two hash maps: one for word1 and one for word2. 
+For every character, I either added it to the map or bumped its count. 
+This gave me a clear picture of each string: which characters it uses and how many times each one shows up.
+
+If the two maps were exactly the same, I was done—return true. 
+That means both strings already match character-for-character and count-for-count, so no operations are needed.
+
+When the maps weren’t identical, I thought about what “close” really means for this problem. 
+The allowed operations let you swap characters around freely and also swap the “labels” of characters (like turning all ‘a’s into ‘b’s and all ‘b’s into ‘a’s). 
+From that, I realized two things must be true for the strings to be close: they must use the exact same set of characters (you can’t invent or delete a brand-new letter), and the multiset of frequencies must match (even if the counts are assigned to different letters, the collection of counts has to be the same).
+
+So I pulled out two pieces of information from the maps:
+    the set of unique characters, and the list of frequency counts.
+    I sorted both the character sets and the frequency lists, then compared them. 
+    If both the sorted character sets match and the sorted frequency lists match, the strings are close; otherwise, they’re not. 
+    This captures the idea that you’re allowed to relabel characters, but not change which characters exist or how many total letters land in each “bucket” of counts.
+ 
+I got it within the second try, which told me the mental model was right. 
+The runtime was 172 ms on that version. After a cleanup—mostly small adjustments to how I built and compared those structures—I got it down to 104 ms. 
+That’s still a big number compared to some blazing-fast submissions, but I’m happy with it because I understood what I wrote and why it works. 
+I also know that chasing the absolute fastest result usually takes extra micro-optimizations or a different data layout, and I wasn’t going to jump to that instantly.
+
+What I like about this solution is the clarity: check length, build counts, short-circuit if maps match, then do a clean two-part comparison (same characters, same frequency multiset). 
+It’s simple, readable, and aligns perfectly with the problem’s operations. If I were to push further next time, I’d think about cutting a few allocations or using arrays when the character set is known to be lowercase English letters, but that’s a polish step, not a logic change.
+
+Overall, this was a solid win: quick understanding, a correct approach based on the problem’s rules, and a nice runtime improvement after cleaning things up.
